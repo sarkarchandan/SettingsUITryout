@@ -8,23 +8,30 @@
 
 import UIKit
 
-class SettingsView {
-    weak var settingsTitle: UILabel? {
-        let label = UILabel()
-        label.tintColor = .darkGray
-        label.font = UIFont(name: "Avenir Next", size: 20)
-        return label
+class SettingsView: UIView {
+    
+    var settingsTitleLabel: UILabel!
+    var settingsDescriptionTextView: UITextView!
+    
+    init() {
+        self.settingsTitleLabel = UILabel()
+        self.settingsTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.settingsTitleLabel.textColor = .darkGray
+        self.settingsTitleLabel.backgroundColor = .clear
+        self.settingsTitleLabel.text = "_default"
+        
+        self.settingsDescriptionTextView = UITextView()
+        self.settingsDescriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+        self.settingsDescriptionTextView.textContainer.lineFragmentPadding = 0
+        self.settingsDescriptionTextView.textColor = .lightGray
+        self.settingsDescriptionTextView.backgroundColor = .clear
+        self.settingsDescriptionTextView.contentMode = .scaleToFill
+        self.settingsDescriptionTextView.text = "_default"
+        
+        super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
     
-    weak var settingsDescription: UITextView? {
-        let textView = UITextView()
-        textView.tintColor = .lightGray
-        textView.font = UIFont(name: "Avenir Next", size: 14)
-        return textView
-    }
-    
-    init(title: String,description: String) {
-        self.settingsTitle?.text = title
-        self.settingsDescription?.text = title
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

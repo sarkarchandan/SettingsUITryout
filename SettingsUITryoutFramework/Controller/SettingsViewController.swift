@@ -10,7 +10,7 @@ import UIKit
 
 open class SettingsViewController: UIViewController {
     
-    open var datasource: [SectionObject] = []
+    open var datasource: [SettingsSectionObject] = []
     
     //MARK: SettingsTableView
     open var settingsTableView: UITableView = {
@@ -63,14 +63,20 @@ open class SettingsViewController: UIViewController {
     private func setupsettingsTableViewLayout() {
         self.settingsTableView.dataSource = self
         self.settingsTableView.delegate = self
-        self.settingsTableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "SettingsCell")
+        self.settingsTableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        //Registering TextFieldTableViewCell with the UITableView
+        self.settingsTableView.register(TextFieldSettingsTableViewCell.classForCoder(), forCellReuseIdentifier: TextFieldSettingsTableViewCell.description())
+        //regsitering SwitchTableViewCell with the UITableView
+        self.settingsTableView.register(SwitchSettingsTableViewCell.classForCoder(), forCellReuseIdentifier: SwitchSettingsTableViewCell.description())
+        
         self.settingsTableView.allowsSelection = false
         self.settingsTableView.separatorStyle = .none
         self.view.addSubview(settingsTableView)
         
         
         let guide = self.view.safeAreaLayoutGuide
-        self.settingsTableView.topAnchor.constraint(equalTo: guide.topAnchor, constant: 4).isActive = true
+        self.settingsTableView.topAnchor.constraint(equalTo: guide.topAnchor, constant: 2).isActive = true
         self.settingsTableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 4).isActive = true
         self.settingsTableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 4).isActive = true
         self.settingsTableView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: 4).isActive = true
@@ -88,8 +94,9 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell") {
-            cell.textLabel?.text = datasource[indexPath.section].sectionRowObjects[indexPath.row].rowTitle
+        if let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldSettingsTableViewCell.description()) as? TextFieldSettingsTableViewCell {
+            let settingRowObject = datasource[indexPath.section].settingsRowObjects[indexPath.row]
+            self.settingsViewController(self, update: settingRowObject, at: cell, for: indexPath)
             return cell
         }else {
             return UITableViewCell()
@@ -97,7 +104,11 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return datasource[section].sectionTitle
+        return datasource[section].sectionHeaderTitle
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }
 
@@ -113,11 +124,13 @@ extension SettingsViewController: SettingsViewControllerDataSource {
     }
     
     func settingsViewController(_ settingsViewController: SettingsViewController, numberOfSettingsIn: Int) -> Int {
-        return datasource[numberOfSettingsIn].sectionRowObjects.count
+        return datasource[numberOfSettingsIn].settingsRowObjects.count
     }
     
-    func settingsViewController(_ settingsViewController: SettingsViewController, update setting: SettingsView, at indexPath: IndexPath) {
-        //TODO
+    func settingsViewController(_ settingsViewController: SettingsViewController, update setting: SettingsRowObject, at cell: UITableViewCell, for indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            (cell as! TextFieldSettingsTableViewCell).updateCell(with: setting)
+        }
     }
     
 }

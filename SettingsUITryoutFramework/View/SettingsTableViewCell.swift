@@ -1,23 +1,21 @@
 //
-//  SwitchSettingsTableViewCell.swift
+//  SettingsTableViewCell.swift
 //  SettingsUITryoutFramework
 //
-//  Created by Chandan Sarkar on 18.10.17.
+//  Created by Chandan Sarkar on 19.10.17.
 //  Copyright © 2017 Chandan Sarkar. All rights reserved.
 //
 
 import UIKit
 
-class SwitchSettingsTableViewCell: SettingsTableViewCell {
+class SettingsTableViewCell: UITableViewCell {
     
-    var settingsSwitch: UISwitch!
+    var settingsView: SettingsView!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.settingsSwitch = UISwitch()
-        self.settingsSwitch.translatesAutoresizingMaskIntoConstraints = false
+        self.settingsView = SettingsView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,8 +32,5 @@ class SwitchSettingsTableViewCell: SettingsTableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    override var description: String {
-        return "SwitchSettingsTableViewCell"
-    }
+
 }
