@@ -74,7 +74,7 @@ open class SettingsViewController: UIViewController {
         self.settingsTableView.separatorStyle = .none
         self.view.addSubview(settingsTableView)
         
-        
+        //Constraints - SettingTableView
         let guide = self.view.safeAreaLayoutGuide
         self.settingsTableView.topAnchor.constraint(equalTo: guide.topAnchor, constant: 2).isActive = true
         self.settingsTableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 4).isActive = true
@@ -94,13 +94,20 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldSettingsTableViewCell.description()) as? TextFieldSettingsTableViewCell {
-            let settingRowObject = datasource[indexPath.section].settingsRowObjects[indexPath.row]
-            self.settingsViewController(self, update: settingRowObject, at: cell, for: indexPath)
-            return cell
-        }else {
-            return UITableViewCell()
+        if indexPath.row == 0 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: SwitchSettingsTableViewCell.description()) as? SwitchSettingsTableViewCell {
+                let settingsRowObject = datasource[indexPath.section].settingsRowObjects[indexPath.row]
+                self.settingsViewController(self, update: settingsRowObject, at: cell, for: indexPath)
+                return cell
+            }
+        }else if indexPath.row == 1 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldSettingsTableViewCell.description()) as? TextFieldSettingsTableViewCell {
+                let settingsRowObject = datasource[indexPath.section].settingsRowObjects[indexPath.row]
+                self.settingsViewController(self, update: settingsRowObject, at: cell, for: indexPath)
+                return cell
+            }
         }
+        return UITableViewCell()
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -129,6 +136,8 @@ extension SettingsViewController: SettingsViewControllerDataSource {
     
     func settingsViewController(_ settingsViewController: SettingsViewController, update setting: SettingsRowObject, at cell: UITableViewCell, for indexPath: IndexPath) {
         if indexPath.row == 0 {
+            (cell as! SwitchSettingsTableViewCell).updateCell(with: setting)
+        }else if indexPath.row == 1 {
             (cell as! TextFieldSettingsTableViewCell).updateCell(with: setting)
         }
     }
@@ -137,7 +146,7 @@ extension SettingsViewController: SettingsViewControllerDataSource {
 
 //MARK: Extension: SettingsViewControllerDelegate
 extension SettingsViewController: SettingsViewControllerDelegate {
-    func settingsViewController(_ settingsViewController: SettingsViewController, didUpdateSettingsView setting: SettingsView, at indexPath: IndexPath) {
+    func settingsViewController(_ settingsViewController: SettingsViewController, didUpdateSettings: SettingsRowObject, at indexPath: IndexPath) {
         //TODO
     }
 }

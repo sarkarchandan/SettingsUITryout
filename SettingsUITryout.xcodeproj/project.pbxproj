@@ -21,7 +21,6 @@
 		17C212441F97D2580054C99C /* SettingsViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212431F97D2580054C99C /* SettingsViewControllerDataSource.swift */; };
 		17C212461F97D3430054C99C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212451F97D3430054C99C /* SettingsView.swift */; };
 		17C212481F97D3770054C99C /* SettingsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212471F97D3770054C99C /* SettingsViewControllerDelegate.swift */; };
-		17C212501F97DAB40054C99C /* MockContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C2124E1F97D5610054C99C /* MockContent.swift */; };
 		17C212521F97DF050054C99C /* SwitchSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212511F97DF050054C99C /* SwitchSettingsTableViewCell.swift */; };
 		17C212541F97DF200054C99C /* TextFieldSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212531F97DF200054C99C /* TextFieldSettingsTableViewCell.swift */; };
 		17C212561F97EB730054C99C /* SettingsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212551F97EB730054C99C /* SettingsContent.swift */; };
@@ -93,7 +92,6 @@
 		17C212431F97D2580054C99C /* SettingsViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerDataSource.swift; sourceTree = "<group>"; };
 		17C212451F97D3430054C99C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		17C212471F97D3770054C99C /* SettingsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerDelegate.swift; sourceTree = "<group>"; };
-		17C2124E1F97D5610054C99C /* MockContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockContent.swift; sourceTree = "<group>"; };
 		17C212511F97DF050054C99C /* SwitchSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		17C212531F97DF200054C99C /* TextFieldSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		17C212551F97EB730054C99C /* SettingsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContent.swift; sourceTree = "<group>"; };
@@ -179,7 +177,6 @@
 		17C2121E1F97CFBC0054C99C /* SettingsUITryoutFramework */ = {
 			isa = PBXGroup;
 			children = (
-				17C2124D1F97D5330054C99C /* MockModel */,
 				17C212421F97D1C70054C99C /* protocols */,
 				17C2123D1F97D02B0054C99C /* Model */,
 				17C2123C1F97D01F0054C99C /* View */,
@@ -242,14 +239,6 @@
 				17C212471F97D3770054C99C /* SettingsViewControllerDelegate.swift */,
 			);
 			path = protocols;
-			sourceTree = "<group>";
-		};
-		17C2124D1F97D5330054C99C /* MockModel */ = {
-			isa = PBXGroup;
-			children = (
-				17C2124E1F97D5610054C99C /* MockContent.swift */,
-			);
-			path = MockModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,7 +443,6 @@
 				17C212761F98D5CE0054C99C /* SettingsTableViewCell.swift in Sources */,
 				17C212561F97EB730054C99C /* SettingsContent.swift in Sources */,
 				17C212521F97DF050054C99C /* SwitchSettingsTableViewCell.swift in Sources */,
-				17C212501F97DAB40054C99C /* MockContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
