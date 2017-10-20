@@ -12,6 +12,10 @@ open class SettingsViewController: UIViewController {
     
     open var datasource: [SettingsSectionObject] = []
     
+    //MARK: Helper Array - ToolBar Button Implementation
+    //Unlikely in real implementation
+    private var tempDataSource: [SettingsSectionObject] = []
+    
     //MARK: SettingsTableView
     open var settingsTableView: UITableView = {
         let tableView = UITableView()
@@ -83,12 +87,20 @@ open class SettingsViewController: UIViewController {
     //MARK: Target-Action Implementation - UIToolBar UIBarButtonItem
     @objc
     private func didSelectAdaptive(_ sender: UIBarButtonItem) {
-        print("Adaptive button tapped.")
+
+        // MARK: Adaptive - Dummy Implementation
+        let adaptiveDataSource = self.datasource.filter {$0.sectionHeaderTitle != "Scan"}
+        self.tempDataSource = datasource
+        self.datasource = adaptiveDataSource
+        self.settingsTableView.reloadData()
     }
     
     @objc
     private func didSelectDefaults(_ sender: UIBarButtonItem) {
-        print("Defaults button tapped.")
+
+        //MARK: Defaults - Dummy Implementation
+        self.datasource = tempDataSource
+        self.settingsTableView.reloadData()
     }
     
     
