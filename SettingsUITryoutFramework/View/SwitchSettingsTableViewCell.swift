@@ -18,29 +18,26 @@ class SwitchSettingsTableViewCell: SettingsTableViewCell {
         
         self.settingsSwitch = UISwitch()
         self.settingsSwitch.translatesAutoresizingMaskIntoConstraints = false
+        self.willSetupLayoutForCell()
         settingsSwitch.addTarget(self, action: #selector(settingsStateChanged), for: .valueChanged)
+        
     }
     
     var subStackView: UIStackView?
     var superStackView: UIStackView?
     
-    //UISwitch Event Detection
+    //MARK: UISwitch - Event Detection
     @objc
     private func settingsStateChanged(_ sender: UISwitch) {
         let module = self.settingsView.settingsTitleLabel.text!
         print(sender.isOn ? "\(String(describing: module)) is ON" : "\(String(describing: module)) is OFF")
     }
     
-    //Update Cell
-    func updateCell(with setting: SettingsRowObject) {
-        
+    //MARK: Cell - LayoutSetup
+    private func willSetupLayoutForCell() {
         let settingsTitleLabel = self.settingsView.settingsTitleLabel
         let settingsDescriptionTextView = self.settingsView.settingsDescriptionTextView
         let settingsSwitch = self.settingsSwitch
-        
-        //Setting the values
-        settingsTitleLabel?.text = setting.rowSettingsTitle
-        settingsDescriptionTextView?.text = setting.rowSettingsDescription
         
         //MARK: RootView inside ContentView
         let rootView = UIView()
@@ -87,6 +84,14 @@ class SwitchSettingsTableViewCell: SettingsTableViewCell {
         superStackView?.trailingAnchor.constraint(equalTo: rootView.trailingAnchor, constant: -10).isActive = true
         superStackView?.topAnchor.constraint(equalTo: rootView.topAnchor, constant: 4).isActive = true
         superStackView?.bottomAnchor.constraint(equalTo: rootView.bottomAnchor, constant: -4).isActive = true
+    }
+    
+    //MARK: Update Cell
+    func updateCell(with setting: SettingsRowObject) {
+        let settingsTitleLabel = self.settingsView.settingsTitleLabel
+        let settingsDescriptionTextView = self.settingsView.settingsDescriptionTextView
+        settingsTitleLabel?.text = setting.rowSettingsTitle
+        settingsDescriptionTextView?.text = setting.rowSettingsDescription
     }
     
     required init?(coder aDecoder: NSCoder) {

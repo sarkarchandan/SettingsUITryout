@@ -15,7 +15,6 @@ class TextFieldSettingsTableViewCell: SettingsTableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.translatesAutoresizingMaskIntoConstraints = false
-        
         self.settingsTextField = UITextField()
         self.settingsTextField.translatesAutoresizingMaskIntoConstraints = false
         self.settingsTextField.adjustsFontSizeToFitWidth = true
@@ -24,6 +23,7 @@ class TextFieldSettingsTableViewCell: SettingsTableViewCell {
         self.settingsTextField.textColor = .darkGray
         self.settingsTextField.contentMode = .scaleAspectFit
         self.settingsTextField.placeholder = "Setting"
+        self.willSetupLayoutCell()
         self.settingsTextField.addTarget(self, action: #selector(textFieldContentChanged), for: .editingChanged)
     }
     
@@ -38,16 +38,12 @@ class TextFieldSettingsTableViewCell: SettingsTableViewCell {
         print("\(module) has been chnaged to: \(String(describing: text))")
     }
     
-    //Update Cell
-    func updateCell(with setting: SettingsRowObject) {
+    //MARK: Cell - Layout Setup
+    private func willSetupLayoutCell() {
         let settingsTitleLabel = self.settingsView.settingsTitleLabel
         let settingsDescriptionTextView = self.settingsView.settingsDescriptionTextView
         let settingsTextField = self.settingsTextField
-        
-        //Setting the values
-        settingsTitleLabel?.text = setting.rowSettingsTitle
-        settingsDescriptionTextView?.text = setting.rowSettingsDescription
-        
+
         //MARK: RootView inside ContentView
         let rootView = UIView()
         rootView.translatesAutoresizingMaskIntoConstraints = false
@@ -94,6 +90,14 @@ class TextFieldSettingsTableViewCell: SettingsTableViewCell {
         superStackView?.trailingAnchor.constraint(equalTo: rootView.trailingAnchor, constant: -10).isActive = true
         superStackView?.topAnchor.constraint(equalTo: rootView.topAnchor, constant: 4).isActive = true
         superStackView?.bottomAnchor.constraint(equalTo: rootView.bottomAnchor, constant: -4).isActive = true
+    }
+    
+    //MARK: Update Cell
+    func updateCell(with setting: SettingsRowObject) {
+        let settingsTitleLabel = self.settingsView.settingsTitleLabel
+        let settingsDescriptionTextView = self.settingsView.settingsDescriptionTextView
+        settingsTitleLabel?.text = setting.rowSettingsTitle
+        settingsDescriptionTextView?.text = setting.rowSettingsDescription
     }
     
     override var description: String {
