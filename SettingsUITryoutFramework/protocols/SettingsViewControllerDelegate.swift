@@ -9,5 +9,5 @@
 import UIKit
 
 protocol SettingsViewControllerDelegate: class {
-    func settingsViewController(_ settingsViewController: SettingsViewController, didUpdateSettings: SettingsRowObject, at indexPath: IndexPath)
+    func settingsView(_ settingsView: SettingsView, didUpdateSettingStateAt indexPath: IndexPath)
 }

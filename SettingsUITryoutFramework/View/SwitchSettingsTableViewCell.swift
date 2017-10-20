@@ -89,7 +89,6 @@ class SwitchSettingsTableViewCell: SettingsTableViewCell {
         superStackView?.bottomAnchor.constraint(equalTo: rootView.bottomAnchor, constant: -4).isActive = true
     }
     
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

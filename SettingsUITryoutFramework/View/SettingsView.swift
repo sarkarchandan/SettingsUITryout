@@ -23,6 +23,7 @@ class SettingsView: UIView {
         self.settingsDescriptionTextView = UITextView()
         self.settingsDescriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         self.settingsDescriptionTextView.textContainer.lineFragmentPadding = 0
+        self.settingsDescriptionTextView.textContainer.lineBreakMode = .byTruncatingTail
         self.settingsDescriptionTextView.isEditable = false
         self.settingsDescriptionTextView.isScrollEnabled = false
         self.settingsDescriptionTextView.textColor = .lightGray

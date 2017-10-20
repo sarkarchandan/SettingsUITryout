@@ -120,7 +120,7 @@ extension SettingsViewController: UITableViewDataSource {
 }
 
 //MARK: Extension: UITableViewDelegate
-extension SettingsViewController: UITableViewDelegate { }
+extension SettingsViewController: UITableViewDelegate {}
 
 
 //MARK: Extension: SettingsViewControllerDataSource
@@ -146,7 +146,7 @@ extension SettingsViewController: SettingsViewControllerDataSource {
 
 //MARK: Extension: SettingsViewControllerDelegate
 extension SettingsViewController: SettingsViewControllerDelegate {
-    func settingsViewController(_ settingsViewController: SettingsViewController, didUpdateSettings: SettingsRowObject, at indexPath: IndexPath) {
+    func settingsView(_ settingsView: SettingsView, didUpdateSettingStateAt indexPath: IndexPath) {
         //TODO
     }
 }

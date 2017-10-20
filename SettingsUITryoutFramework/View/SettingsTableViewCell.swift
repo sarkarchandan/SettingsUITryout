@@ -11,6 +11,7 @@ import UIKit
 class SettingsTableViewCell: UITableViewCell {
     
     var settingsView: SettingsView!
+    var delegate: SettingsViewControllerDelegate?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
