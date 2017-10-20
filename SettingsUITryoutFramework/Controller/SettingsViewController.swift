@@ -121,7 +121,7 @@ open class SettingsViewController: UIViewController {
         
         //Constraints - SettingTableView
         let guide = self.view.safeAreaLayoutGuide
-        self.settingsTableView.topAnchor.constraint(equalTo: guide.topAnchor, constant: 2).isActive = true
+        self.settingsTableView.topAnchor.constraint(equalTo: guide.topAnchor, constant: 1).isActive = true
         self.settingsTableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 4).isActive = true
         self.settingsTableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 4).isActive = true
         self.settingsTableView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: 4).isActive = true
