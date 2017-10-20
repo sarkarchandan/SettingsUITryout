@@ -19,7 +19,7 @@ open class SettingsViewController: UIViewController {
         return tableView
     }()
     
-    //MARK: SystemButtonItems
+    //MARK: SystemButtonItems - NavigationBar
     open var saveSystemButtonItem: UIBarButtonSystemItem = {
         let button = UIBarButtonSystemItem.save
         return button
@@ -29,37 +29,70 @@ open class SettingsViewController: UIViewController {
         let button = UIBarButtonSystemItem.cancel
         return button
     }()
-
+    
+    
     //MARK: viewDidLoad
     open override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        setupNavigationItemLayout()
+        setupNavigationControllerLayout()
         setupsettingsTableViewLayout()
     }
     
-    //MARK: LayoutSetup - NavigationItem
-    private func setupNavigationItemLayout() {
+    //MARK: LayoutSetup - NavigationController
+    private func setupNavigationControllerLayout() {
         navigationItem.title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = true
-        let saveBarButtonItem = UIBarButtonItem(barButtonSystemItem: saveSystemButtonItem, target: self, action: #selector(saveButtonClicked))
-        let cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: cancelSystemButtonItem, target: self, action: #selector(cancelButtonClicked))
+        
+        //MARK: Target-Action Definition - UINavigationBar - UIBarButtonItem
+        let saveBarButtonItem = UIBarButtonItem(barButtonSystemItem: saveSystemButtonItem, target: self, action: #selector(didTapSave))
+        let cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: cancelSystemButtonItem, target: self, action: #selector(didTapCancel))
         navigationItem.rightBarButtonItem = saveBarButtonItem
         navigationItem.leftBarButtonItem = cancelBarButtonItem
+        
+        //MARK: ToolBar - Implementation
+        navigationController?.isToolbarHidden = false
+        let toolBar = navigationController?.toolbar
+        toolBar?.barStyle = .default
+        
+        //Target-Action Definition - UIToolBar - UIBarButtonItem
+        let adaptiveBarButtonItem = UIBarButtonItem(title: "Adaptive", style: .plain, target: self, action: #selector(didSelectAdaptive))
+        
+        let flexiblePaddingBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        let defaultsBarButtonItem = UIBarButtonItem(title: "Defaults", style: .plain, target: self, action: #selector(didSelectDefaults))
+        
+        self.setToolbarItems(
+            [adaptiveBarButtonItem,
+             flexiblePaddingBarButtonItem,
+             defaultsBarButtonItem],animated: false)
+    }
+    
+    //MARK: Target-Action Implementation - UINavigationBar UIBarButtonItem
+    @objc
+    private func didTapSave(saveButtonItem: UIBarButtonItem) {
+        print("Save button tapped.")
     }
     
     @objc
-    private func saveButtonClicked(saveButtonItem: UIBarButtonItem) {
-        print("Save button clicked")
+    private func didTapCancel(cancelButtonItem: UIBarButtonItem) {
+        print("Cancel button tapped.")
+    }
+    
+    
+    //MARK: Target-Action Implementation - UIToolBar UIBarButtonItem
+    @objc
+    private func didSelectAdaptive(_ sender: UIBarButtonItem) {
+        print("Adaptive button tapped.")
     }
     
     @objc
-    private func cancelButtonClicked(cancelButtonItem: UIBarButtonItem) {
-        print("Cancel button clicked")
+    private func didSelectDefaults(_ sender: UIBarButtonItem) {
+        print("Defaults button tapped.")
     }
     
     
-    //MARK: LayoutSetup - TableView
+    //MARK: LayoutSetup - UITableView
     private func setupsettingsTableViewLayout() {
         self.settingsTableView.dataSource = self
         self.settingsTableView.delegate = self
@@ -119,7 +152,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
 }
 
-//MARK: Extension: UITableViewDelegate
+//MARK: TODO - Extension: UITableViewDelegate
 extension SettingsViewController: UITableViewDelegate {}
 
 
@@ -147,7 +180,7 @@ extension SettingsViewController: SettingsViewControllerDataSource {
 //MARK: Extension: SettingsViewControllerDelegate
 extension SettingsViewController: SettingsViewControllerDelegate {
     func settingsView(_ settingsView: SettingsView, didUpdateSettingStateAt indexPath: IndexPath) {
-        //TODO
+        //MARK: TODO - SettingsViewControllerDelegate Implementation
     }
 }
 
