@@ -11,10 +11,16 @@ import UIKit
 class TextFieldSettingsTableViewCell: SettingsTableViewCell {
 
     var settingsTextField: UITextField!
+    var superStackView: UIStackView!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.willSetupSettingsTextField()
+    }
+    
+    //MARK: Setup - SettingsTextView
+    private func willSetupSettingsTextField() {
         self.settingsTextField = UITextField()
         self.settingsTextField.translatesAutoresizingMaskIntoConstraints = false
         self.settingsTextField.adjustsFontSizeToFitWidth = true
@@ -22,70 +28,45 @@ class TextFieldSettingsTableViewCell: SettingsTableViewCell {
         self.settingsTextField.borderStyle = .roundedRect
         self.settingsTextField.textColor = .darkGray
         self.settingsTextField.contentMode = .scaleAspectFit
-        self.settingsTextField.placeholder = "Setting"
-        self.willSetupLayoutCell()
-        self.settingsTextField.addTarget(self, action: #selector(textFieldContentChanged), for: .editingChanged)
+        self.settingsTextField.placeholder = "Numeric"
+        self.settingsTextField.keyboardType = .numberPad
+        self.willSetupLayoutForCell()
+        self.settingsTextField.addTarget(self, action: #selector(didChangeSettingPriority), for: .editingChanged)
     }
-    
-    var subStackView: UIStackView?
-    var superStackView: UIStackView?
     
     //UITextField Event Detection
     @objc
-    private func textFieldContentChanged(_ sender: UITextField) {
+    private func didChangeSettingPriority(_ sender: UITextField) {
         let text = sender.text!
         let module = self.settingsView.settingsTitleLabel.text!
         print("\(module) has been chnaged to: \(String(describing: text))")
     }
     
     //MARK: Cell - Layout Setup
-    private func willSetupLayoutCell() {
-        let settingsTitleLabel = self.settingsView.settingsTitleLabel
-        let settingsDescriptionTextView = self.settingsView.settingsDescriptionTextView
-        let settingsTextField = self.settingsTextField
-
-        //MARK: RootView inside ContentView
-        let rootView = UIView()
-        rootView.translatesAutoresizingMaskIntoConstraints = false
-        rootView.backgroundColor = .white
+    override internal func willSetupLayoutForCell() {
+        super.willSetupLayoutForCell()
         
-        //Adding Constraints for the rootView inside contentView
-        self.contentView.addSubview(rootView)
-        rootView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
-        rootView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        rootView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
-        rootView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        rootView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        
-        //Setting up SubStackView
-        subStackView = UIStackView(arrangedSubviews: [settingsTitleLabel!,settingsDescriptionTextView!])
-        subStackView?.translatesAutoresizingMaskIntoConstraints = false
-        subStackView?.axis = .vertical
-        subStackView?.alignment = .fill
-        subStackView?.distribution = .fill
-        
-        //Setting up SuperStackView
+        //MARK: Setup - SuperStackView
         superStackView = UIStackView(arrangedSubviews: [subStackView!,settingsTextField!])
         rootView.addSubview(superStackView!)
-        superStackView?.translatesAutoresizingMaskIntoConstraints = false
-        superStackView?.axis = .horizontal
-        superStackView?.alignment = .center
-        superStackView?.distribution = .equalCentering
-        superStackView?.spacing = 15
+        superStackView.translatesAutoresizingMaskIntoConstraints = false
+        superStackView.axis = .horizontal
+        superStackView.alignment = .center
+        superStackView.distribution = .equalCentering
+        superStackView.spacing = 15
         
-        //Setting Content Priorities for underlying layouts
-        subStackView!.setContentHuggingPriority(.init(250), for: .horizontal)
-        settingsTextField!.setContentHuggingPriority(.init(251), for: .horizontal)
-        subStackView!.setContentCompressionResistancePriority(.init(750), for: .horizontal)
-        settingsTextField!.setContentCompressionResistancePriority(.init(751), for: .horizontal)
+        //MARK: Content Priorities - SubStackView / SettingTextField
+        subStackView.setContentHuggingPriority(.init(250), for: .horizontal)
+        settingsTextField.setContentHuggingPriority(.init(251), for: .horizontal)
+        subStackView.setContentCompressionResistancePriority(.init(750), for: .horizontal)
+        settingsTextField.setContentCompressionResistancePriority(.init(751), for: .horizontal)
         
-        
-        //Constraints for the SubStackView
+        //MARK: Constraints - SubStackView wrt SuperStackView
         subStackView?.topAnchor.constraint(equalTo: superStackView!.topAnchor).isActive = true
         subStackView?.leadingAnchor.constraint(equalTo: superStackView!.leadingAnchor).isActive = true
         subStackView?.bottomAnchor.constraint(equalTo: superStackView!.bottomAnchor).isActive = true
         
-        //Constraints for the SuperStackView
+        //MARK: Constraints - SuperStackView wrt rootView
         superStackView?.leadingAnchor.constraint(equalTo: rootView.leadingAnchor, constant: 4).isActive = true
         superStackView?.trailingAnchor.constraint(equalTo: rootView.trailingAnchor, constant: -10).isActive = true
         superStackView?.topAnchor.constraint(equalTo: rootView.topAnchor, constant: 4).isActive = true

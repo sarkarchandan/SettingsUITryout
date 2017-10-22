@@ -11,75 +11,54 @@ import UIKit
 class SwitchSettingsTableViewCell: SettingsTableViewCell {
     
     var settingsSwitch: UISwitch!
+    var superStackView: UIStackView!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.translatesAutoresizingMaskIntoConstraints = false
-        
+        self.willSetupSettingsSwitch()
+    }
+    
+    //MARK: Setup - SettingsSwitch
+    private func willSetupSettingsSwitch() {
         self.settingsSwitch = UISwitch()
         self.settingsSwitch.translatesAutoresizingMaskIntoConstraints = false
         self.willSetupLayoutForCell()
-        settingsSwitch.addTarget(self, action: #selector(settingsStateChanged), for: .valueChanged)
-        
+        settingsSwitch.addTarget(self, action: #selector(didChangeSettingState), for: .valueChanged)
     }
-    
-    var subStackView: UIStackView?
-    var superStackView: UIStackView?
     
     //MARK: UISwitch - Event Detection
     @objc
-    private func settingsStateChanged(_ sender: UISwitch) {
+    private func didChangeSettingState(_ sender: UISwitch) {
         let module = self.settingsView.settingsTitleLabel.text!
         print(sender.isOn ? "\(String(describing: module)) is ON" : "\(String(describing: module)) is OFF")
     }
     
     //MARK: Cell - LayoutSetup
-    private func willSetupLayoutForCell() {
-        let settingsTitleLabel = self.settingsView.settingsTitleLabel
-        let settingsDescriptionTextView = self.settingsView.settingsDescriptionTextView
-        let settingsSwitch = self.settingsSwitch
+    override internal func willSetupLayoutForCell() {
+        super.willSetupLayoutForCell()
         
-        //MARK: RootView inside ContentView
-        let rootView = UIView()
-        rootView.translatesAutoresizingMaskIntoConstraints = false
-        rootView.backgroundColor = .white
-        
-        //Adding Constraints for the rootView inside contentView
-        self.contentView.addSubview(rootView)
-        rootView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true
-        rootView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        rootView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
-        rootView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        rootView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        
-        //Setting up SubStackView
-        subStackView = UIStackView(arrangedSubviews: [settingsTitleLabel!,settingsDescriptionTextView!])
-        subStackView?.translatesAutoresizingMaskIntoConstraints = false
-        subStackView?.axis = .vertical
-        subStackView?.alignment = .fill
-        subStackView?.distribution = .fill
-        
-        //Setting up SuperStackView
+        //MARK: Setup - SuperStackView
         superStackView = UIStackView(arrangedSubviews: [subStackView!,settingsSwitch!])
         rootView.addSubview(superStackView!)
-        superStackView?.translatesAutoresizingMaskIntoConstraints = false
-        superStackView?.axis = .horizontal
-        superStackView?.alignment = .center
-        superStackView?.distribution = .fill
-        superStackView?.spacing = 20
+        superStackView.translatesAutoresizingMaskIntoConstraints = false
+        superStackView.axis = .horizontal
+        superStackView.alignment = .center
+        superStackView.distribution = .fill
+        superStackView.spacing = 20
         
-        //Setting Content Priorities for underlying layouts
-        subStackView!.setContentHuggingPriority(.init(250), for: .horizontal)
-        settingsSwitch!.setContentHuggingPriority(.init(251), for: .horizontal)
-        subStackView!.setContentCompressionResistancePriority(.init(750), for: .horizontal)
+        //MARK: Content Priorities - SubStackView / SettingsSwitch
+        subStackView.setContentHuggingPriority(.init(250), for: .horizontal)
+        settingsSwitch.setContentHuggingPriority(.init(251), for: .horizontal)
+        subStackView.setContentCompressionResistancePriority(.init(750), for: .horizontal)
         settingsSwitch!.setContentCompressionResistancePriority(.init(751), for: .horizontal)
         
-        //Constraints for the SubStackView
+        //MARK: Constraints - SubStackView wrt SuperStackView
         subStackView?.topAnchor.constraint(equalTo: superStackView!.topAnchor).isActive = true
         subStackView?.leadingAnchor.constraint(equalTo: superStackView!.leadingAnchor).isActive = true
         subStackView?.bottomAnchor.constraint(equalTo: superStackView!.bottomAnchor).isActive = true
         
-        //Constraints for the SuperStackView
+        //MARK: Constraints - SuperStackView wrt rootView
         superStackView?.leadingAnchor.constraint(equalTo: rootView.leadingAnchor, constant: 4).isActive = true
         superStackView?.trailingAnchor.constraint(equalTo: rootView.trailingAnchor, constant: -10).isActive = true
         superStackView?.topAnchor.constraint(equalTo: rootView.topAnchor, constant: 4).isActive = true
@@ -105,7 +84,6 @@ class SwitchSettingsTableViewCell: SettingsTableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     

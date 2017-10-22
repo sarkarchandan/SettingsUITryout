@@ -39,12 +39,12 @@ open class SettingsViewController: UIViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        setupNavigationControllerLayout()
-        setupsettingsTableViewLayout()
+        willSetupNavigationControllerLayout()
+        willSetupsettingsTableViewLayout()
     }
     
     //MARK: LayoutSetup - NavigationController
-    private func setupNavigationControllerLayout() {
+    private func willSetupNavigationControllerLayout() {
         navigationItem.title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -59,7 +59,8 @@ open class SettingsViewController: UIViewController {
         let toolBar = navigationController?.toolbar
         toolBar?.barStyle = .default
         
-        //Target-Action Definition - UIToolBar - UIBarButtonItem
+        
+        //MARK: Target-Action Definition - UIToolBar - UIBarButtonItem
         let adaptiveBarButtonItem = UIBarButtonItem(title: "Adaptive", style: .plain, target: self, action: #selector(didSelectAdaptive))
         
         let flexiblePaddingBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -72,12 +73,14 @@ open class SettingsViewController: UIViewController {
              defaultsBarButtonItem],animated: false)
     }
     
+    
     //MARK: Target-Action Implementation - UINavigationBar UIBarButtonItem
+    //Save Button
     @objc
     private func didTapSave(saveButtonItem: UIBarButtonItem) {
         print("Save button tapped.")
     }
-    
+    //Cancel Button
     @objc
     private func didTapCancel(cancelButtonItem: UIBarButtonItem) {
         print("Cancel button tapped.")
@@ -85,6 +88,7 @@ open class SettingsViewController: UIViewController {
     
     
     //MARK: Target-Action Implementation - UIToolBar UIBarButtonItem
+    //Adaptive Button
     @objc
     private func didSelectAdaptive(_ sender: UIBarButtonItem) {
 
@@ -94,7 +98,7 @@ open class SettingsViewController: UIViewController {
         self.datasource = adaptiveDataSource
         self.settingsTableView.reloadData()
     }
-    
+    //Defaults Button
     @objc
     private func didSelectDefaults(_ sender: UIBarButtonItem) {
 
@@ -105,7 +109,7 @@ open class SettingsViewController: UIViewController {
     
     
     //MARK: LayoutSetup - UITableView
-    private func setupsettingsTableViewLayout() {
+    private func willSetupsettingsTableViewLayout() {
         self.settingsTableView.dataSource = self
         self.settingsTableView.delegate = self
         self.settingsTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -119,7 +123,7 @@ open class SettingsViewController: UIViewController {
         self.settingsTableView.separatorStyle = .none
         self.view.addSubview(settingsTableView)
         
-        //Constraints - SettingTableView
+        //MARK: Constraints - SettingTableView
         let guide = self.view.safeAreaLayoutGuide
         self.settingsTableView.topAnchor.constraint(equalTo: guide.topAnchor, constant: 1).isActive = true
         self.settingsTableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 4).isActive = true
