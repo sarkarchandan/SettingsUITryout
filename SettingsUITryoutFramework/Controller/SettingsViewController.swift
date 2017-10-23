@@ -10,11 +10,11 @@ import UIKit
 
 open class SettingsViewController: UIViewController {
     
-    open var datasource: [SettingsSectionObject] = []
+    open var datasource: [SettingsSection] = []
     
     //MARK: Helper Array - ToolBar Button Implementation
     //Unlikely in real implementation
-    private var tempDataSource: [SettingsSectionObject] = []
+    private var tempDataSource: [SettingsSection] = []
     
     //MARK: SettingsTableView
     open var settingsTableView: UITableView = {
@@ -93,7 +93,7 @@ open class SettingsViewController: UIViewController {
     private func didSelectAdaptive(_ sender: UIBarButtonItem) {
 
         // MARK: Adaptive - Dummy Implementation
-        let adaptiveDataSource = self.datasource.filter {$0.sectionHeaderTitle != "Scan"}
+        let adaptiveDataSource = self.datasource.filter {$0.title != "Scan"}
         self.tempDataSource = datasource
         self.datasource = adaptiveDataSource
         self.settingsTableView.reloadData()
@@ -145,13 +145,13 @@ extension SettingsViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: SwitchSettingsTableViewCell.description()) as? SwitchSettingsTableViewCell {
-                let settingsRowObject = datasource[indexPath.section].settingsRowObjects[indexPath.row]
+                let settingsRowObject = datasource[indexPath.section].rows[indexPath.row]
                 self.settingsViewController(self, update: settingsRowObject, at: cell, for: indexPath)
                 return cell
             }
         }else if indexPath.row == 1 {
             if let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldSettingsTableViewCell.description()) as? TextFieldSettingsTableViewCell {
-                let settingsRowObject = datasource[indexPath.section].settingsRowObjects[indexPath.row]
+                let settingsRowObject = datasource[indexPath.section].rows[indexPath.row]
                 self.settingsViewController(self, update: settingsRowObject, at: cell, for: indexPath)
                 return cell
             }
@@ -160,7 +160,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return datasource[section].sectionHeaderTitle
+        return datasource[section].title
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -180,10 +180,10 @@ extension SettingsViewController: SettingsViewControllerDataSource {
     }
     
     func settingsViewController(_ settingsViewController: SettingsViewController, numberOfSettingsIn: Int) -> Int {
-        return datasource[numberOfSettingsIn].settingsRowObjects.count
+        return datasource[numberOfSettingsIn].rows.count
     }
     
-    func settingsViewController(_ settingsViewController: SettingsViewController, update setting: SettingsRowObject, at cell: UITableViewCell, for indexPath: IndexPath) {
+    func settingsViewController(_ settingsViewController: SettingsViewController, update setting: SettingsRow, at cell: UITableViewCell, for indexPath: IndexPath) {
         if indexPath.row == 0 {
             (cell as! SwitchSettingsTableViewCell).updateCell(with: setting)
         }else if indexPath.row == 1 {

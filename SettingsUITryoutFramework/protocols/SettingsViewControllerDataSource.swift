@@ -11,5 +11,5 @@ import UIKit
 protocol SettingsViewControllerDataSource: class {
     func numberOfSettings(in settingsViewController: SettingsViewController) -> Int
     func settingsViewController(_ settingsViewController: SettingsViewController, numberOfSettingsIn: Int) -> Int
-    func settingsViewController(_ settingsViewController: SettingsViewController, update setting: SettingsRowObject, at cell: UITableViewCell, for indexPath: IndexPath)
+    func settingsViewController(_ settingsViewController: SettingsViewController, update setting: SettingsRow, at cell: UITableViewCell, for indexPath: IndexPath)
 }

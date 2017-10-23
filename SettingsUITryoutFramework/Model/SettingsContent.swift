@@ -9,22 +9,22 @@
 import Foundation
 
 //MARK: SettingsContent
-open class SettingsSectionObject: NSObject {
-    var sectionHeaderTitle: String
-    var settingsRowObjects: [SettingsRowObject]
+open class SettingsSection: NSObject {
+    let title: String
+    let rows: [SettingsRow]
     
-    public init(with title: String, and rows: [SettingsRowObject]) {
-        self.sectionHeaderTitle = title
-        self.settingsRowObjects = rows
+    public init(title: String, rows: [SettingsRow]) {
+        self.title = title
+        self.rows = rows
     }
 }
 
-open class SettingsRowObject: NSObject {
-    var rowSettingsTitle: String
-    var rowSettingsDescription: String
+open class SettingsRow: NSObject {
+    let title: String
+    let text: String
     
-    public init(with title: String, and description: String) {
-        self.rowSettingsTitle = title
-        self.rowSettingsDescription = description
+    public init(title: String, description: String) {
+        self.title = title
+        self.text = description
     }
 }

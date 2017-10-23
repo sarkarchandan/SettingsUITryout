@@ -74,11 +74,11 @@ class TextFieldSettingsTableViewCell: SettingsTableViewCell {
     }
     
     //MARK: Update Cell
-    func updateCell(with setting: SettingsRowObject) {
+    func updateCell(with setting: SettingsRow) {
         let settingsTitleLabel = self.settingsView.settingsTitleLabel
         let settingsDescriptionTextView = self.settingsView.settingsDescriptionTextView
-        settingsTitleLabel?.text = setting.rowSettingsTitle
-        settingsDescriptionTextView?.text = setting.rowSettingsDescription
+        settingsTitleLabel?.text = setting.title
+        settingsDescriptionTextView?.text = setting.text
     }
     
     override var description: String {
