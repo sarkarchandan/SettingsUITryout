@@ -25,13 +25,13 @@ open class SettingsViewController: UIViewController {
     
     //MARK: SystemButtonItems - NavigationBar
     open var saveSystemButtonItem: UIBarButtonSystemItem = {
-        let button = UIBarButtonSystemItem.save
-        return button
+        let buttonSystemItem = UIBarButtonSystemItem.save
+        return buttonSystemItem
     }()
     
     open var cancelSystemButtonItem: UIBarButtonSystemItem = {
-        let button = UIBarButtonSystemItem.cancel
-        return button
+        let buttonSystemItem = UIBarButtonSystemItem.cancel
+        return buttonSystemItem
     }()
     
     
@@ -83,7 +83,7 @@ open class SettingsViewController: UIViewController {
     //Cancel Button
     @objc
     private func didTapCancel(cancelButtonItem: UIBarButtonItem) {
-        print("Cancel button tapped.")
+        dismiss(animated: true, completion: nil)
     }
     
     

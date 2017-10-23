@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  MainSettingViewController.swift
 //  SettingsUITryout
 //
 //  Created by Chandan Sarkar on 18.10.17.
@@ -9,7 +9,7 @@
 import UIKit
 import SettingsUITryoutFramework
 
-class MainViewController: SettingsViewController {
+class MainSettingViewController: SettingsViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

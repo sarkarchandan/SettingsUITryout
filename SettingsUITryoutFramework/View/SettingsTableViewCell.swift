@@ -13,6 +13,7 @@ class SettingsTableViewCell: UITableViewCell {
     var settingsView: SettingsView!
     var subStackView: UIStackView!
     var rootView: UIView!
+    weak var delegate: SettingsViewControllerDelegate?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -21,7 +22,7 @@ class SettingsTableViewCell: UITableViewCell {
     }
     
     //MARK: Layout Setup
-    public func willSetupLayoutForCell() {
+    func willSetupLayoutForCell() {
         let settingsTitleLabel = self.settingsView.settingsTitleLabel
         let settingsDescriptionTextView = self.settingsView.settingsDescriptionTextView
         

@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		178A78CE1F9DED0400529234 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178A78CC1F9DED0400529234 /* LaunchScreen.storyboard */; };
 		17C211F91F97CEBF0054C99C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C211F81F97CEBF0054C99C /* AppDelegate.swift */; };
 		17C212001F97CEBF0054C99C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17C211FF1F97CEBF0054C99C /* Assets.xcassets */; };
-		17C212031F97CEBF0054C99C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17C212011F97CEBF0054C99C /* LaunchScreen.storyboard */; };
 		17C2120E1F97CEBF0054C99C /* SettingsUITryoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C2120D1F97CEBF0054C99C /* SettingsUITryoutTests.swift */; };
 		17C212261F97CFBC0054C99C /* SettingsUITryoutFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C2121D1F97CFBC0054C99C /* SettingsUITryoutFramework.framework */; };
 		17C2122D1F97CFBC0054C99C /* SettingsUITryoutFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C2122C1F97CFBC0054C99C /* SettingsUITryoutFrameworkTests.swift */; };
@@ -17,7 +17,7 @@
 		17C212321F97CFBC0054C99C /* SettingsUITryoutFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C2121D1F97CFBC0054C99C /* SettingsUITryoutFramework.framework */; };
 		17C212331F97CFBC0054C99C /* SettingsUITryoutFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17C2121D1F97CFBC0054C99C /* SettingsUITryoutFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17C2123F1F97D04E0054C99C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C211FA1F97CEBF0054C99C /* SettingsViewController.swift */; };
-		17C212411F97D07B0054C99C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212401F97D07B0054C99C /* MainViewController.swift */; };
+		17C212411F97D07B0054C99C /* MainSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212401F97D07B0054C99C /* MainSettingViewController.swift */; };
 		17C212441F97D2580054C99C /* SettingsViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212431F97D2580054C99C /* SettingsViewControllerDataSource.swift */; };
 		17C212461F97D3430054C99C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212451F97D3430054C99C /* SettingsView.swift */; };
 		17C212481F97D3770054C99C /* SettingsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212471F97D3770054C99C /* SettingsViewControllerDelegate.swift */; };
@@ -25,6 +25,7 @@
 		17C212541F97DF200054C99C /* TextFieldSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212531F97DF200054C99C /* TextFieldSettingsTableViewCell.swift */; };
 		17C212561F97EB730054C99C /* SettingsContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212551F97EB730054C99C /* SettingsContent.swift */; };
 		17C212761F98D5CE0054C99C /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C212751F98D5CE0054C99C /* SettingsTableViewCell.swift */; };
+		17C5CBB01F9E7A18008BC5E4 /* AppBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C5CBAF1F9E7A18008BC5E4 /* AppBaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,11 +74,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		178A78CD1F9DED0400529234 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17C211F51F97CEBF0054C99C /* SettingsUITryout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SettingsUITryout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17C211F81F97CEBF0054C99C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17C211FA1F97CEBF0054C99C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		17C211FF1F97CEBF0054C99C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		17C212021F97CEBF0054C99C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17C212041F97CEBF0054C99C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17C212091F97CEBF0054C99C /* SettingsUITryoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SettingsUITryoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17C2120D1F97CEBF0054C99C /* SettingsUITryoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUITryoutTests.swift; sourceTree = "<group>"; };
@@ -88,7 +89,7 @@
 		17C212251F97CFBC0054C99C /* SettingsUITryoutFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SettingsUITryoutFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17C2122C1F97CFBC0054C99C /* SettingsUITryoutFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUITryoutFrameworkTests.swift; sourceTree = "<group>"; };
 		17C2122E1F97CFBC0054C99C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17C212401F97D07B0054C99C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		17C212401F97D07B0054C99C /* MainSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSettingViewController.swift; sourceTree = "<group>"; };
 		17C212431F97D2580054C99C /* SettingsViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerDataSource.swift; sourceTree = "<group>"; };
 		17C212451F97D3430054C99C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		17C212471F97D3770054C99C /* SettingsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 		17C212531F97DF200054C99C /* TextFieldSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		17C212551F97EB730054C99C /* SettingsContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContent.swift; sourceTree = "<group>"; };
 		17C212751F98D5CE0054C99C /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		17C5CBAF1F9E7A18008BC5E4 /* AppBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				17C211F81F97CEBF0054C99C /* AppDelegate.swift */,
 				17C211FF1F97CEBF0054C99C /* Assets.xcassets */,
 				17C212041F97CEBF0054C99C /* Info.plist */,
+				178A78CC1F9DED0400529234 /* LaunchScreen.storyboard */,
 			);
 			path = SettingsUITryout;
 			sourceTree = "<group>";
@@ -207,7 +210,6 @@
 		17C2123C1F97D01F0054C99C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				17C212011F97CEBF0054C99C /* LaunchScreen.storyboard */,
 				17C212451F97D3430054C99C /* SettingsView.swift */,
 				17C212751F98D5CE0054C99C /* SettingsTableViewCell.swift */,
 				17C212511F97DF050054C99C /* SwitchSettingsTableViewCell.swift */,
@@ -227,7 +229,8 @@
 		17C2123E1F97D0320054C99C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				17C212401F97D07B0054C99C /* MainViewController.swift */,
+				17C212401F97D07B0054C99C /* MainSettingViewController.swift */,
+				17C5CBAF1F9E7A18008BC5E4 /* AppBaseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -385,8 +388,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17C212031F97CEBF0054C99C /* LaunchScreen.storyboard in Resources */,
 				17C212001F97CEBF0054C99C /* Assets.xcassets in Resources */,
+				178A78CE1F9DED0400529234 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,8 +421,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C5CBB01F9E7A18008BC5E4 /* AppBaseViewController.swift in Sources */,
 				17C211F91F97CEBF0054C99C /* AppDelegate.swift in Sources */,
-				17C212411F97D07B0054C99C /* MainViewController.swift in Sources */,
+				17C212411F97D07B0054C99C /* MainSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,10 +484,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		17C212011F97CEBF0054C99C /* LaunchScreen.storyboard */ = {
+		178A78CC1F9DED0400529234 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				17C212021F97CEBF0054C99C /* Base */,
+				178A78CD1F9DED0400529234 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

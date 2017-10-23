@@ -39,7 +39,7 @@ class SwitchSettingsTableViewCell: SettingsTableViewCell {
         super.willSetupLayoutForCell()
         
         //MARK: Setup - SuperStackView
-        superStackView = UIStackView(arrangedSubviews: [subStackView!,settingsSwitch!])
+        superStackView = UIStackView(arrangedSubviews: [subStackView,settingsSwitch!])
         rootView.addSubview(superStackView!)
         superStackView.translatesAutoresizingMaskIntoConstraints = false
         superStackView.axis = .horizontal
